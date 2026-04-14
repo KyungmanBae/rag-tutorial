@@ -1,4 +1,4 @@
-name: rag_env_261_cu124
+name: rag_env_cu124
 channels:
   - conda-forge
 channel_priority: strict
