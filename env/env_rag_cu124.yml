@@ -1,1 +1,50 @@
+name: rag_env_261_cu124
+channels:
+  - conda-forge
+channel_priority: strict
+
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # GPU Torch (CUDA 12.4 wheels)
+      - torch --extra-index-url https://download.pytorch.org/whl/cu124
+      - torchvision --extra-index-url https://download.pytorch.org/whl/cu124
+      - torchaudio --extra-index-url https://download.pytorch.org/whl/cu124
+
+      # UI (Gradio)
+      - gradio>=4.0.0
+      - fastapi
+      - uvicorn
+
+      # HF / LLM
+      - transformers==5.2.0
+      - accelerate
+      - safetensors
+      - huggingface_hub
+      - tokenizers
+
+      # External search (DuckDuckGo, wikipedia)
+      - ddgs
+      - wikipedia-api
+
+      # Quant (4bit/8bit)
+      - bitsandbytes>=0.46.1
+      
+      #datasets
+      - datasets
+      
+      # NLP / Retrieval
+      - konlpy
+      - rank_bm25
+      - sentence-transformers
+      - numpy==1.26.4
+      - faiss-gpu
+
+      # LlamaIndex stack
+      - llama-index
+      - llama-index-vector-stores-faiss      
+      - llama-index-embeddings-huggingface
+      
+
 
