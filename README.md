@@ -6,6 +6,8 @@
 검색증강생성(RAG) 실습을 위한 예제 코드, 환경 설정 파일, 발표 자료를 모아둔 저장소입니다.  
 This repository contains example code, environment setup files, and presentation materials for hands-on Retrieval-Augmented Generation (RAG) practice.
 
+이 저장소는 표준 오픈소스 라이선스로 배포되지 않습니다. [`LICENSE.md`](./LICENSE.md)와 [`TERMS.md`](./TERMS.md)를 함께 확인하세요.  
+> This repository is not distributed under a standard open source license. Please refer to [`LICENSE.md`](./LICENSE.md) and [`TERMS.md`](./TERMS.md).
 ---
 
 ## 1. 저장소 소개
