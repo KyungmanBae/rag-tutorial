@@ -205,3 +205,32 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# --- RAG tutorial project specific ---
+
+# Local models
+hf_model/
+
+# Retrieval / index outputs
+rag_index/
+data/korquad_output/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Local datasets not to redistribute
+KorQuAD_v1_0_dev.json
+KorQuAD_v1_0_train.json
+KorQuAD_v1.0_dev.json
+KorQuAD_v1.0_train.json
+
+# Optional local experiment outputs
+outputs/
+checkpoints/
+cache/
+
+# OS files
+.DS_Store
+Thumbs.db
