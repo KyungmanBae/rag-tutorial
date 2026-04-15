@@ -12,7 +12,8 @@ dependencies:
       - torchaudio --index-url https://download.pytorch.org/whl/cu124
 
       # UI
-      - gradio>=4.0.0
+      - gradio==6.8.0
+      - gradio_client==1.5.1
       - fastapi
       - uvicorn
 
