@@ -33,25 +33,51 @@ After running a script, open the local URL shown in the terminal in your web bro
 
 ## 2. 환경 설정
 
-이 저장소는 `./env/env_rag_cu124.yml` 환경 파일을 사용합니다.
+이 저장소의 예제 환경은 `conda-forge` 채널을 기준으로 작성되었습니다.
+
+환경 파일 위치:
+- `./env/env_rag_cu124.yml`
+
+권장 순서:
 
 ```bash
+conda config --show channels
+conda config --remove channels defaults
+conda config --add channels conda-forge
+conda config --set channel_priority strict
 conda env create -f ./env/env_rag_cu124.yml
-conda activate rag_env_261_cu124
+conda activate rag_env_cu124
 ```
 
 참고:
-- 이 저장소의 예제 환경은 `conda-forge` 기준으로 작성되어 있습니다.
-- 다른 채널 또는 다른 패키지 배포 경로를 사용하는 경우, 패키지 호환성과 조직 내 사용 정책을 별도로 검토하세요.
-- 조직 또는 기업 환경에서는 채널 선택, 패키지 배포 정책, 라이선스 검토 기준이 다를 수 있습니다.
+- 위 명령은 `defaults` 채널 사용을 피하고, `conda-forge`를 우선 사용하도록 맞추기 위한 예시입니다.
+- 기존 conda 설정에 다른 채널이 등록되어 있을 수 있으므로, 먼저 `conda config --show channels`로 현재 설정을 확인하는 것을 권장합니다.
+- `defaults`가 등록되어 있지 않은 경우 `conda config --remove channels defaults` 명령은 무시해도 됩니다.
+- 다른 채널을 함께 사용하는 경우 패키지 해석 결과나 호환성이 달라질 수 있습니다.
 - GPU 환경에서는 CUDA 버전과 PyTorch 호환성을 함께 확인하세요.
 
-Notes:
-- The example environment for this repository is written with `conda-forge` in mind.
-- If you use other channels or package distribution paths, review compatibility and your organization's internal policy separately.
-- In institutional or commercial environments, package channel policy and license review requirements may differ.
-- For GPU environments, also verify CUDA and PyTorch compatibility.
+The example environment for this repository was prepared with the `conda-forge` channel in mind.
 
+Environment file:
+- `./env/env_rag_cu124.yml`
+
+Recommended setup:
+
+```bash
+conda config --show channels
+conda config --remove channels defaults
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+conda env create -f ./env/env_rag_cu124.yml
+conda activate rag_env_cu124
+```
+
+Notes:
+- The commands above are an example setup intended to avoid the `defaults` channel and prioritize `conda-forge`.
+- Your existing conda configuration may already include other channels, so it is recommended to check the current configuration first with `conda config --show channels`.
+- If `defaults` is not currently configured, `conda config --remove channels defaults` can be ignored.
+- Using additional channels may result in different dependency resolution outcomes or compatibility differences.
+- For GPU environments, also verify CUDA and PyTorch compatibility.
 ---
 
 ## 3. 실행 방법
