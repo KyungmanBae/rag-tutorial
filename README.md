@@ -116,6 +116,101 @@ Notes:
 
 ---
 
+## 2-2. PyTorch / CUDA 확인 및 문제 해결
+
+이 저장소는 **Ubuntu 24.x + CUDA 12.4** 환경에서 실행 및 기본 동작을 확인했습니다.
+
+실행 전 또는 실행 중 GPU 인식 문제가 발생하면, 먼저 현재 PyTorch와 CUDA 인식 상태를 확인하세요.
+
+### 현재 torch / CUDA 상태 확인
+
+```bash
+python - <<'PY'
+import torch
+print("torch version:", torch.__version__)
+print("torch cuda:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+print("device count:", torch.cuda.device_count())
+if torch.cuda.is_available():
+    print("device 0:", torch.cuda.get_device_name(0))
+PY
+```
+
+예상 확인 포인트:
+- `torch cuda:` 값이 현재 시스템 CUDA 환경과 크게 다르지 않은지 확인
+- `cuda available: True` 인지 확인
+- GPU가 여러 장 있는 경우 `device count`가 정상적으로 표시되는지 확인
+
+### 대표적인 문제 예시
+
+예를 들어 이 저장소는 CUDA 12.4 환경을 기준으로 테스트했는데,
+실제로는 `torch 2.11.0+cu130`처럼 **CUDA 13.0 빌드**가 설치되면 GPU를 인식하지 못할 수 있습니다.
+
+이 경우 다음과 같은 현상이 나타날 수 있습니다.
+
+- `cuda available: False`
+- `The NVIDIA driver on your system is too old`
+- Gradio UI는 실행되지만 GPU 가속은 동작하지 않음
+
+### 잘못 설치된 torch 삭제 후 재설치
+
+기존 torch 계열 패키지를 먼저 삭제합니다.
+
+```bash
+python -m pip uninstall -y torch torchvision torchaudio
+python -m pip cache purge
+```
+
+그다음 현재 저장소 기준 환경에 맞게 다시 설치합니다.
+
+```bash
+python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+```
+
+설치 후 다시 확인합니다.
+
+### 참고
+
+- 운영체제, CUDA 버전, 드라이버 버전, Python 버전이 바뀌면 적절한 torch 빌드도 달라질 수 있습니다.
+- 다른 환경에서는 `cu124` 대신 해당 환경에 맞는 PyTorch wheel 경로를 사용해야 할 수 있습니다.
+- GPU 관련 패키지는 환경 차이에 민감하므로, 문제가 생기면 먼저 `torch`, `torchvision`, `torchaudio` 버전부터 확인하는 것을 권장합니다.
+
+### English
+
+This repository was tested on **Ubuntu 24.x + CUDA 12.4**.
+
+If GPU detection fails, first check the installed PyTorch and CUDA runtime information.
+
+```bash
+python - <<'PY'
+import torch
+print("torch version:", torch.__version__)
+print("torch cuda:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+print("device count:", torch.cuda.device_count())
+if torch.cuda.is_available():
+    print("device 0:", torch.cuda.get_device_name(0))
+PY
+```
+
+Typical checks:
+- whether `torch.version.cuda` matches the intended CUDA environment
+- whether `cuda available` is `True`
+- whether the GPU count is detected correctly
+
+A common failure case is that a different CUDA build of PyTorch gets installed, such as `torch 2.11.0+cu130`, even though the system was prepared for CUDA 12.4.
+
+In that case, remove the existing torch packages and reinstall them:
+
+Then verify the installation again with the same check script above.
+
+Notes:
+- The correct torch build may vary depending on the OS, CUDA version, driver version, and Python version.
+- On other environments, you may need a different PyTorch wheel target instead of `cu124`.
+- When GPU-related issues occur, checking `torch`, `torchvision`, and `torchaudio` versions first is strongly recommended.
+
+---
+
 ## 3. 실행 방법
 
 아래 스크립트들은 실행 후 **Gradio 웹 UI**를 띄우는 형태로 구성되어 있습니다.  
