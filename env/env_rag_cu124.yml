@@ -1,7 +1,6 @@
 name: rag_env_cu124
 channels:
   - conda-forge
-channel_priority: strict
 
 dependencies:
   - python=3.10
@@ -12,7 +11,7 @@ dependencies:
       - torchvision --extra-index-url https://download.pytorch.org/whl/cu124
       - torchaudio --extra-index-url https://download.pytorch.org/whl/cu124
 
-      # UI (Gradio)
+      # UI
       - gradio>=4.0.0
       - fastapi
       - uvicorn
@@ -24,16 +23,16 @@ dependencies:
       - huggingface_hub
       - tokenizers
 
-      # External search (DuckDuckGo, wikipedia)
+      # External search
       - ddgs
       - wikipedia-api
 
-      # Quant (4bit/8bit)
+      # Quantization
       - bitsandbytes>=0.46.1
-      
-      #datasets
+
+      # Datasets
       - datasets
-      
+
       # NLP / Retrieval
       - konlpy
       - rank_bm25
@@ -41,10 +40,7 @@ dependencies:
       - numpy==1.26.4
       - faiss-gpu
 
-      # LlamaIndex stack
+      # LlamaIndex
       - llama-index
-      - llama-index-vector-stores-faiss      
+      - llama-index-vector-stores-faiss
       - llama-index-embeddings-huggingface
-      
-
-
