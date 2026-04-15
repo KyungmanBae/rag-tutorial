@@ -1,4 +1,5 @@
 # RAG Tutorial
+RAG tutorial, Gradio, KorQuAD, KorFactScore, FAISS, BM25, Korean retrieval
 
 > 이 저장소를 사용하기 전에 먼저 [`TERMS.md`](./TERMS.md)를 확인하세요.  
 > Please read [`TERMS.md`](./TERMS.md) before using this repository.
