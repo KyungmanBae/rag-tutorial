@@ -33,7 +33,7 @@ After running a script, open the local URL shown in the terminal in your web bro
 
 ## 2. 환경 설정
 
-이 저장소의 예제 환경은 `conda-forge` 채널을 기준으로 작성되었습니다.
+이 저장소의 예제 환경은 **Ubuntu 24.x + NVIDIA CUDA 12.4** 환경을 기준으로 작성되었으며, 해당 환경에서 실행 및 기본 동작을 확인했습니다.
 
 환경 파일 위치:
 - `./env/env_rag_cu124.yml`
@@ -46,17 +46,19 @@ conda config --remove channels defaults
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 conda env create -f ./env/env_rag_cu124.yml
-conda activate rag_env_cu124
+conda activate rag_env_261_cu124
 ```
 
 참고:
+- 이 저장소의 예제 환경은 `conda-forge` 채널을 기준으로 구성되어 있습니다.
 - 위 명령은 `defaults` 채널 사용을 피하고, `conda-forge`를 우선 사용하도록 맞추기 위한 예시입니다.
 - 기존 conda 설정에 다른 채널이 등록되어 있을 수 있으므로, 먼저 `conda config --show channels`로 현재 설정을 확인하는 것을 권장합니다.
 - `defaults`가 등록되어 있지 않은 경우 `conda config --remove channels defaults` 명령은 무시해도 됩니다.
-- 다른 채널을 함께 사용하는 경우 패키지 해석 결과나 호환성이 달라질 수 있습니다.
-- GPU 환경에서는 CUDA 버전과 PyTorch 호환성을 함께 확인하세요.
+- 운영체제, CUDA 버전, GPU 드라이버 버전, Python 버전이 달라지면 패키지 해석 결과와 호환성이 달라질 수 있습니다.
+- 특히 **PyTorch, torchvision, torchaudio, bitsandbytes, faiss, konlpy** 등은 환경 차이에 민감할 수 있으므로, 다른 환경에서는 버전을 조정해야 할 수 있습니다.
+- GPU 환경에서는 CUDA 버전과 PyTorch 호환성을 반드시 함께 확인하세요.
 
-The example environment for this repository was prepared with the `conda-forge` channel in mind.
+The example environment for this repository was prepared and validated on **Ubuntu 24.x + NVIDIA CUDA 12.4**.
 
 Environment file:
 - `./env/env_rag_cu124.yml`
@@ -69,15 +71,49 @@ conda config --remove channels defaults
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 conda env create -f ./env/env_rag_cu124.yml
-conda activate rag_env_cu124
+conda activate rag_env_261_cu124
 ```
 
 Notes:
+- The example environment in this repository is designed around the `conda-forge` channel.
 - The commands above are an example setup intended to avoid the `defaults` channel and prioritize `conda-forge`.
 - Your existing conda configuration may already include other channels, so it is recommended to check the current configuration first with `conda config --show channels`.
 - If `defaults` is not currently configured, `conda config --remove channels defaults` can be ignored.
-- Using additional channels may result in different dependency resolution outcomes or compatibility differences.
-- For GPU environments, also verify CUDA and PyTorch compatibility.
+- Package resolution and compatibility may differ depending on the operating system, CUDA version, GPU driver version, and Python version.
+- In particular, **PyTorch, torchvision, torchaudio, bitsandbytes, faiss, and konlpy** may require version adjustments on different environments.
+- For GPU environments, always verify CUDA and PyTorch compatibility together.
+
+---
+## 2-1. 검증 환경 / Tested Environment
+
+이 저장소는 아래 환경에서 실행 및 기본 동작을 확인했습니다.
+
+- OS: Ubuntu 24.x
+- Python: 3.10
+- CUDA: 12.4
+- GPU Driver: NVIDIA Driver 550.xx 계열
+- Environment file: `./env/env_rag_cu124.yml`
+
+주의:
+- 위 환경은 **예시이자 검증 기준 환경**입니다.
+- 다른 운영체제(Ubuntu 22.x, Windows, WSL, macOS 등) 또는 다른 CUDA 버전(예: 12.1, 12.2, 12.6, 13.x)에서는 일부 패키지 버전 조정이 필요할 수 있습니다.
+- 특히 GPU 관련 패키지는 환경 차이에 따라 설치 방식이 달라질 수 있습니다.
+- 동일한 스크립트라도 환경 차이에 따라 CPU 모드로 동작하거나 일부 패키지 충돌이 발생할 수 있습니다.
+
+This repository was tested for basic execution in the following environment:
+
+- OS: Ubuntu 24.x
+- Python: 3.10
+- CUDA: 12.4
+- GPU Driver: NVIDIA Driver 550.xx series
+- Environment file: `./env/env_rag_cu124.yml`
+
+Notes:
+- The above environment is the **reference and tested environment**.
+- On other operating systems (Ubuntu 22.x, Windows, WSL, macOS, etc.) or different CUDA versions (such as 12.1, 12.2, 12.6, or 13.x), some package versions may need adjustment.
+- GPU-related packages in particular may require environment-specific installation steps.
+- Depending on the environment, the same script may run in CPU mode or encounter package compatibility issues.
+
 ---
 
 ## 3. 실행 방법
