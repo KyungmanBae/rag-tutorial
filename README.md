@@ -276,6 +276,14 @@ cp /download/path/KorQuAD_v1.0_dev.json ./data/KorQuAD_v1_0_dev.json
 
 단, 위 파일명 변경은 로컬 사용 편의를 위한 예시일 뿐이며, 원본 데이터 파일의 라이선스나 배포 조건이 변경되는 것은 아닙니다.
 
+콘솔에서 다운로드하는 예시:
+
+```bash
+mkdir -p ./data
+wget -O ./data/KorQuAD_v1_0_train.json https://korquad.github.io/dataset/KorQuAD_v1.0_train.json
+wget -O ./data/KorQuAD_v1_0_dev.json https://korquad.github.io/dataset/KorQuAD_v1.0_dev.json
+```
+
 KorQuAD original dataset files are not included in this repository.  
 Please download them from the official source and copy them into the local `./data/` directory.
 
