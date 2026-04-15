@@ -208,6 +208,71 @@ Notes:
 - When GPU-related issues occur, checking `torch`, `torchvision`, and `torchaudio` versions first is strongly recommended.
 
 ---
+## 2-3. 학습에 사용한 베이스 임베딩 모델 / Base Embedding Model Used for Training
+
+KorQuAD 기반 검색 실습에서는 다음 한국어 문장 임베딩 모델을 베이스 모델로 사용했습니다.
+
+- `snunlp/KR-SBERT-V40K-klueNLI-augSTS`
+
+모델 개요:
+- 한국어 문장 임베딩을 위한 SBERT 계열 모델
+- `sentence-transformers` 방식으로 바로 사용할 수 있음
+- 문장 및 문단을 768차원 dense vector로 변환
+- 의미 기반 검색, 문장 유사도, semantic search, clustering 등에 활용 가능
+
+공식 모델 페이지:
+- https://huggingface.co/snunlp/KR-SBERT-V40K-klueNLI-augSTS
+
+관련 GitHub 저장소:
+- https://github.com/snunlp/KR-SBERT
+
+### 라이선스 및 인용 / License and Citation
+
+- License: MIT
+- Model page: https://huggingface.co/snunlp/KR-SBERT-V40K-klueNLI-augSTS
+- Source repository: https://github.com/snunlp/KR-SBERT
+
+Citation:
+```bibtex
+@misc{kr-sbert,
+  author = {Park, Suzi and Hyopil Shin},
+  title = {KR-SBERT: A Pre-trained Korean-specific Sentence-BERT model},
+  year = {2021},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/snunlp/KR-SBERT}}
+}
+```
+
+This repository uses `snunlp/KR-SBERT-V40K-klueNLI-augSTS` as the base embedding model for KorQuAD-based retrieval experiments.  
+Please refer to the original model page and repository for the latest license and citation details.
+
+간단 사용 예시:
+
+```python
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer("snunlp/KR-SBERT-V40K-klueNLI-augSTS")
+embeddings = model.encode(["예시 문장입니다.", "문장 임베딩 테스트"])
+print(embeddings.shape)
+```
+
+This repository uses the following Korean sentence embedding model as the base model for KorQuAD-based retrieval training and evaluation:
+
+- `snunlp/KR-SBERT-V40K-klueNLI-augSTS`
+
+Model summary:
+- Korean SBERT-style sentence embedding model
+- Can be used directly with `sentence-transformers`
+- Maps sentences and paragraphs into a 768-dimensional dense vector space
+- Suitable for semantic search, sentence similarity, clustering, and retrieval tasks
+
+Official model page:
+- https://huggingface.co/snunlp/KR-SBERT-V40K-klueNLI-augSTS
+
+Related GitHub repository:
+- https://github.com/snunlp/KR-SBERT
+---
 
 ## 3. 실행 방법
 
@@ -235,7 +300,7 @@ python external_rag.py
 python internal_rag.py
 ```
 
-### KorQuAD 기반 검색 실습
+### KorQuAD 기반 검색 실습(뉴럴 모델 학습)
 
 ```bash
 python korquad_rag.py
