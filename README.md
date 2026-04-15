@@ -175,8 +175,6 @@ python -m pip install torch torchvision torchaudio --index-url https://download.
 - 다른 환경에서는 `cu124` 대신 해당 환경에 맞는 PyTorch wheel 경로를 사용해야 할 수 있습니다.
 - GPU 관련 패키지는 환경 차이에 민감하므로, 문제가 생기면 먼저 `torch`, `torchvision`, `torchaudio` 버전부터 확인하는 것을 권장합니다.
 
-### English
-
 This repository was tested on **Ubuntu 24.x + CUDA 12.4**.
 
 If GPU detection fails, first check the installed PyTorch and CUDA runtime information.
