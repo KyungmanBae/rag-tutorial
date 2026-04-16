@@ -364,6 +364,27 @@ KorFactScore는 별도 저장소를 clone하여 사용합니다.
 공식 저장소:
 - https://github.com/ETRI-XAINLP/KorFactScore
 
+이후 KorFactScore 저장소 안내에 따라 필요한 Wikipedia DB를 준비한 뒤 실행하세요.
+이 실습에서는 위키피디아 덤프를 기반으로 SQLite DB를 생성한 뒤 사용합니다.  
+DB 생성 스크립트로 `build_kowiki_db.py`를 실행하세요.
+
+생성 위치(Output directory):
+- `./KorFactScore/downloaded_files/`
+
+예시:
+
+```bash
+python build_kowiki_db.py
+```
+
+생성이 완료되면 아래와 같은 위치에 DB 파일이 준비되어 있어야 합니다.
+
+```text
+./KorFactScore/downloaded_files/
+```
+
+이후 KorFactScore 실습은 다음과 같이 실행합니다.
+
 예시:
 
 ```bash
@@ -371,10 +392,11 @@ git clone https://github.com/ETRI-XAINLP/KorFactScore.git
 python korfactscore_lab.py --korfs_path ./KorFactScore
 ```
 
-이후 KorFactScore 저장소 안내에 따라 필요한 Wikipedia DB를 준비한 뒤 실행하세요.
-
-KorFactScore must be cloned separately.  
-Please follow the original repository instructions for the required Wikipedia DB and related setup.
+KorFactScore must be cloned separately.
+In this tutorial, a SQLite database is created from a Wikipedia dump before running the verification workflow.  
+Run `build_kowiki_db.py` to download/process the dump and build the database.
+After the process is complete, the generated database files should be located under:
+Then run the KorFactScore practice script:
 
 ---
 
