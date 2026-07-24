@@ -1,6 +1,6 @@
-# RAG Tutorial
-
-RAG tutorial, Gradio, KorQuAD, KorFactScore, FAISS, BM25, Korean retrieval
+# Korean RAG Tutorial: Gradio, FAISS, BM25, KorQuAD and KorFactScore
+A hands-on Korean Retrieval-Augmented Generation tutorial covering local LLM inference, web search RAG, document retrieval, hybrid search, KorQuAD evaluation, and KorFactScore-based factuality checking.
+한국어 검색증강생성 실습을 위한 교육용 저장소로, 로컬 LLM 실행, 외부 검색 RAG, FAISS·BM25 기반 문서 검색, KorQuAD 평가 및 KorFactScore 사실성 검증 예제를 제공합니다.
 
 > 이 저장소를 사용하기 전에 먼저 [`TERMS.md`](TERMS.md)를 확인하세요.  
 > Please read [`TERMS.md`](TERMS.md) before using this repository.
@@ -8,9 +8,22 @@ RAG tutorial, Gradio, KorQuAD, KorFactScore, FAISS, BM25, Korean retrieval
 검색증강생성(RAG) 실습을 위한 예제 코드, 환경 설정 파일, 발표 자료를 모아둔 저장소입니다.  
 This repository contains example code, environment setup files, and presentation materials for hands-on Retrieval-Augmented Generation (RAG) practice.
 
+## What you can learn
+
+- Local LLM inference with Gradio
+- Web-search-based external RAG
+- FAISS and BM25 hybrid retrieval
+- KorQuAD retrieval training and evaluation
+- KorFactScore factuality evaluation
+- Ubuntu, CUDA, uv, conda and Colab setup
+
 이 저장소는 표준 오픈소스 라이선스로 배포되지 않습니다. [`LICENSE.md`](LICENSE.md)와 [`TERMS.md`](TERMS.md)를 함께 확인하세요.
 
 > This repository is not distributed under a standard open source license. Please refer to [`LICENSE.md`](LICENSE.md) and [`TERMS.md`](TERMS.md).
+
+[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](...)
+[![CUDA](https://img.shields.io/badge/CUDA-12.4-green.svg)](...)
+[![RAG](https://img.shields.io/badge/RAG-Korean%20Tutorial-orange.svg)](...)
 
 ---
 
